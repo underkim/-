@@ -5,8 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DailyDiary"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="달력" Height="500" Width="500">
     <Grid>
-
-    </Grid>
+        <Viewbox>
+        <Calendar Name="calendar" PreviewMouseUp="Calendar_PreviewMouseUp"
+                  VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
+        </Viewbox>
+     </Grid>
 </Window>
