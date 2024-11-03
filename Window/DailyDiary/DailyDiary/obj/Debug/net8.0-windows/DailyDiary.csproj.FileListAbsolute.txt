@@ -21,3 +21,5 @@ C:\Users\rlaeh\Desktop\Daily\DailyDiary\Window\DailyDiary\DailyDiary\obj\Debug\n
 C:\Users\rlaeh\Desktop\Daily\DailyDiary\Window\DailyDiary\DailyDiary\obj\Debug\net8.0-windows\ref\DailyDiary.dll
 C:\Users\rlaeh\Desktop\Daily\DailyDiary\Window\DailyDiary\DailyDiary\obj\Debug\net8.0-windows\LoginWindow.g.cs
 C:\Users\rlaeh\Desktop\Daily\DailyDiary\Window\DailyDiary\DailyDiary\obj\Debug\net8.0-windows\LoginWindow.baml
+C:\Users\rlaeh\Desktop\Daily\DailyDiary\Window\DailyDiary\DailyDiary\obj\Debug\net8.0-windows\DiaryEntryWindow.g.cs
+C:\Users\rlaeh\Desktop\Daily\DailyDiary\Window\DailyDiary\DailyDiary\obj\Debug\net8.0-windows\DiaryEntryWindow.baml
