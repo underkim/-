@@ -23,3 +23,48 @@
 - **영속성**: 주로 디스크 스토리지에 의존하여, 디스크 공간에 따라 기능을 강화할 수 있습니다.
 - **인덱싱**: 보조 인덱싱을 지원하여 더 빠른 쿼리와 검색이 가능합니다.
 - **가용성**: 가용성이 뛰어나며 대규모 애플리케이션에 적합합니다.
+
+# Database Structure
+
+## Database: MongoDB
+- MongoDB를 사용하여 데이터 영구 저장 및 관리.
+- 주 컬렉션은 User와 Diary로 나누어짐.
+
+## Collections
+
+### 1. User Collection
+- 사용자가 Google 로그인을 통해 인증을 받으면 사용자 정보를 저장.
+- 필수 필드는 다음과 같음:
+
+| Field          | Type   | Description                           |
+|----------------|--------|---------------------------------------|
+| `_id`          | ObjectId | MongoDB 고유 ID                    |
+| `googleToken`  | String | Google 로그인 토큰 (고유 식별 값으로 활용 가능) |
+| `name`         | String | 사용자 이름                          |
+| `email`        | String | 사용자 이메일                        |
+| `createdAt`    | Date   | 계정 생성 날짜                        |
+| `lastLogin`    | Date   | 마지막 로그인 날짜                    |
+
+### 2. Diary Collection
+- 사용자가 작성하는 일기 데이터를 저장.
+- 사용자가 로그인한 상태에서 일기를 작성하고, 일기에는 작성 날짜, 제목, 내용, 사진 파일이 포함됨.
+
+| Field          | Type       | Description                           |
+|----------------|------------|---------------------------------------|
+| `_id`          | ObjectId   | MongoDB 고유 ID                      |
+| `userId`       | ObjectId   | 작성자 ID (User 컬렉션의 `_id`와 참조 관계) |
+| `date`         | Date       | 일기 작성 날짜                        |
+| `title`        | String     | 일기 제목                             |
+| `content`      | String     | 일기 내용                             |
+| `photo`        | BinaryData | 사진 파일 (Base64 인코딩 또는 BinaryData 사용) |
+| `createdAt`    | Date       | 일기 생성 날짜 (필요시 넣을 예정)|
+| `updatedAt`    | Date       | 일기 수정 날짜 (필요시 넣을 예정)     |
+
+### 3. Authentication
+- Google 로그인 인증을 통해 사용자 정보를 받아오며, Google OAuth API에서 반환된 토큰을 `googleToken` 필드에 저장.
+- 로그인 후 `googleToken`을 통해 User 컬렉션에서 사용자를 식별함.
+
+## Notes
+- MongoDB의 `_id` 필드는 기본적으로 고유 식별자로 사용됩니다.
+- Diary 컬렉션의 `userId` 필드는 User 컬렉션의 `_id`와 매핑하여, 각 사용자가 작성한 일기 데이터를 쉽게 참조할 수 있게 합니다.
+- 사진 파일은 용량을 줄이기 위해 적절히 압축하여 저장하거나 별도의 파일 스토리지와 연동할 수 있습니다.
