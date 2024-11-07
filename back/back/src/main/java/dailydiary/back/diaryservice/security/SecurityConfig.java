@@ -16,7 +16,7 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests(authorize -> authorize
-                        .requestMatchers("/api/register","/api/login").permitAll() // 회원 가입 API 접근 허용
+                        .requestMatchers("/api/google-login").permitAll() // 회원 가입 API 접근 허용
                         .anyRequest().authenticated() // 나머지 요청은 인증 필요
                 )
                 .csrf(csrf -> csrf.disable()); // CSRF 비활성화

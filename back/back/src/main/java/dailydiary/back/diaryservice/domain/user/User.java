@@ -10,13 +10,8 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @NoArgsConstructor                // 기본 생성자 자동 생성
 public class User {
     @Id
-    private String id;             // MongoDB의 기본 ID
-    private String username;       // 사용자 이름
-    private String password;       // 해시된 비밀번호
+    private String email;              // 사용자 이메일 (primary key 역할)
+    private String accessToken;        // 액세스 토큰
 
-    // 생성자는 Lombok의 @Data와 @NoArgsConstructor가 처리하므로 생략 가능
-    public User(String username, String password) {
-        this.username = username;
-        this.password = password;
-    }
+    // 필요에 따라 특정 생성자를 추가할 수 있지만 현재 Lombok 애노테이션으로 자동 생성됩니다.
 }
