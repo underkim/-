@@ -7,24 +7,24 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
-    <Compile Update="View\CalendarView.xaml.cs">
+    <Compile Update="Views\CalendarView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="View\DiaryEntryView.xaml.cs">
+    <Compile Update="Views\DiaryEntryView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="View\GoogleLoginView.xaml.cs">
+    <Compile Update="Views\GoogleLoginView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Page Update="View\CalendarView.xaml">
+    <Page Update="Views\CalendarView.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="View\DiaryEntryView.xaml">
+    <Page Update="Views\DiaryEntryView.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="View\GoogleLoginView.xaml">
+    <Page Update="Views\GoogleLoginView.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

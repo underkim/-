@@ -1,0 +1,23 @@
+﻿<Window x:Class="DailyDiary.Views.GoogleLoginView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:DailyDiary.Views"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:converters="clr-namespace:DailyDiary.Converters"
+        Title="로그인" Height="350" Width="400"
+        mc:Ignorable="d">
+
+    <Window.Resources>
+        <converters:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+    </Window.Resources>
+
+    <Grid>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="300">
+            <TextBlock Text="환영합니다!" FontSize="24" FontWeight="Bold" TextAlignment="Center"/>
+            <Button Content="Google로 로그인" Command="{Binding LoginCommand}" Height="40"/>
+            <TextBlock Text="{Binding StatusMessage}" Foreground="Red" TextAlignment="Center" Visibility="{Binding IsBusy, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+            <ProgressBar IsIndeterminate="True" Visibility="{Binding IsBusy, Converter={StaticResource BooleanToVisibilityConverter}}" Height="10"/>
+        </StackPanel>
+    </Grid>
+</Window>
