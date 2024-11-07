@@ -2,12 +2,16 @@
 using System.Diagnostics;
 using System.Net;
 using System.Net.Http;
+using System.Runtime.InteropServices;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using DailyDiary.Services;
+using DailyDiary.Views;
 
 namespace DailyDiary.ViewModels
 {
@@ -15,6 +19,8 @@ namespace DailyDiary.ViewModels
     {
         private bool isBusy;
         private string statusMessage;
+        private Window parentWindow;
+
 
         public bool IsBusy
         {
@@ -30,8 +36,9 @@ namespace DailyDiary.ViewModels
 
         public ICommand LoginCommand { get; }
 
-        public GoogleLoginViewModel()
+        public GoogleLoginViewModel(Window parentWindow)
         {
+            this.parentWindow = parentWindow;
             LoginCommand = new AsyncRelayCommand(InitiateLoginAsync);
         }
 
@@ -43,7 +50,7 @@ namespace DailyDiary.ViewModels
             {
 
                 var listener = new HttpListener();
-                string redirectUri = $"http://localhost:5000/";
+                string redirectUri = $"http://localhost:5000/api/google-login/callback/";
                 listener.Prefixes.Add(redirectUri);
                 listener.Start();
                 Console.WriteLine("로컬 서버가 시작되었습니다...");
@@ -60,13 +67,21 @@ namespace DailyDiary.ViewModels
                     OpenBrowser(authUrl);
 
                     var context = await listener.GetContextAsync();
-                    var token = context.Request.QueryString["token"]; 
+                    var token = context.Request.QueryString["code"]; 
 
                     if (!string.IsNullOrEmpty(token))
                     {
                        
                         AuthenticationService.SaveSessionToken(token);
-                        Console.WriteLine("세션 토큰이 저장되었습니다.");
+                        StatusMessage = "로그인 성공";
+
+                        
+                        Application.Current.Dispatcher.Invoke(() =>
+                        {
+                            var calendarView = new CalendarView();
+                            calendarView.Show();
+                            parentWindow.Close();
+                        });
                     }
 
                     var responseString = "<!DOCTYPE html><html><head><meta charset=\"UTF-8\"></head><body>인증이 완료되었습니다. 이 창을 닫으세요.</body></html>";
@@ -77,10 +92,22 @@ namespace DailyDiary.ViewModels
                     await context.Response.OutputStream.WriteAsync(buffer, 0, buffer.Length);
                     context.Response.OutputStream.Close();
 
-
                     listener.Stop();
+                    var data = new { accessToken = AuthenticationService.GetSessionToken() };
+                    string json = JsonSerializer.Serialize(data);
+                    var content = new StringContent(json, Encoding.UTF8, "application/json");
 
-                    StatusMessage = "브라우저에서 로그인을 완료하세요.";
+                    var resp = await client.PostAsync("http://172.20.115.153:8082/api/google-login",content);
+                    
+                    if(response.IsSuccessStatusCode)
+                    {
+                        string responseData = await response.Content.ReadAsStringAsync();
+                        Console.WriteLine("Response: " + responseData);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Request failed: " + response.StatusCode);
+                    }
 
                 }
                 else

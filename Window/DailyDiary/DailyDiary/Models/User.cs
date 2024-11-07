@@ -9,6 +9,5 @@ namespace DailyDiary.Models
     class User
     {
         public string email { get; set; }
-        public string googleToken { get; set; }
     }
 }

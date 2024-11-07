@@ -25,7 +25,7 @@ namespace DailyDiary.Views
         public GoogleLoginView()
         {
             InitializeComponent();
-            DataContext = new GoogleLoginViewModel();
+            DataContext = new GoogleLoginViewModel(this);
 
         }
     }
