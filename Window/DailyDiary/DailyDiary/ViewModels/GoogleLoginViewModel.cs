@@ -49,8 +49,7 @@ namespace DailyDiary.ViewModels
                 Console.WriteLine("로컬 서버가 시작되었습니다...");
 
                 var client = new HttpClient();
-                //var jsonContent = "{\"key\":\"value\"}"; // 여기에 실제 데이터를 JSON 형식으로 추가합니다.
-                //var content = new StringContent(jsonContent, Encoding.UTF8, "application/json");
+                
 
                 var response = await client.GetAsync("http://172.20.115.153:8082/api/google-login");
 
@@ -61,11 +60,11 @@ namespace DailyDiary.ViewModels
                     OpenBrowser(authUrl);
 
                     var context = await listener.GetContextAsync();
-                    var token = context.Request.QueryString["token"]; // 세션 토큰 수신
+                    var token = context.Request.QueryString["token"]; 
 
                     if (!string.IsNullOrEmpty(token))
                     {
-                        // 5. 세션 토큰 저장
+                       
                         AuthenticationService.SaveSessionToken(token);
                         Console.WriteLine("세션 토큰이 저장되었습니다.");
                     }
