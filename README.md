@@ -42,8 +42,7 @@
 | `googleToken`  | String | Google 로그인 토큰 (고유 식별 값으로 활용 가능) |
 | `name`         | String | 사용자 이름                          |
 | `email`        | String | 사용자 이메일                        |
-| `createdAt`    | Date   | 계정 생성 날짜                        |
-| `lastLogin`    | Date   | 마지막 로그인 날짜                    |
+
 
 ### 2. Diary Collection
 - 사용자가 작성하는 일기 데이터를 저장.
