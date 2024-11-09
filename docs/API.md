@@ -11,7 +11,6 @@
 - 설명: 사용자가 로그인할 때 호출되며, 사용자 인증을 처리함
 - 메서드: POST
 - 엔드포인트: /api/google-login
-- Request : { "username": "사용자 이름", "password":"비밀번호"}
 - Response :
   - 성공 시 (200) : {"accessToken" : "acessToken 토큰" , "message": "로그인 성공"}
   - 실패 시 (401) : {"message": "로그인 실패"}
