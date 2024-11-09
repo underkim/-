@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "74NySAky/WI=",
+  "dgSpecHash": "y2qTnyvH5Ag=",
   "success": true,
   "projectFilePath": "C:\\Users\\rlaeh\\Desktop\\Daily\\DailyDiary\\Window\\DailyDiary\\DailyDiary\\DailyDiary.csproj",
   "expectedPackageFiles": [
@@ -8,6 +8,9 @@
     "C:\\Users\\rlaeh\\.nuget\\packages\\google.apis\\1.68.0\\google.apis.1.68.0.nupkg.sha512",
     "C:\\Users\\rlaeh\\.nuget\\packages\\google.apis.auth\\1.68.0\\google.apis.auth.1.68.0.nupkg.sha512",
     "C:\\Users\\rlaeh\\.nuget\\packages\\google.apis.core\\1.68.0\\google.apis.core.1.68.0.nupkg.sha512",
+    "C:\\Users\\rlaeh\\.nuget\\packages\\materialdesigncolors\\3.1.0\\materialdesigncolors.3.1.0.nupkg.sha512",
+    "C:\\Users\\rlaeh\\.nuget\\packages\\materialdesignthemes\\5.1.0\\materialdesignthemes.5.1.0.nupkg.sha512",
+    "C:\\Users\\rlaeh\\.nuget\\packages\\microsoft.xaml.behaviors.wpf\\1.1.39\\microsoft.xaml.behaviors.wpf.1.1.39.nupkg.sha512",
     "C:\\Users\\rlaeh\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
     "C:\\Users\\rlaeh\\.nuget\\packages\\system.codedom\\7.0.0\\system.codedom.7.0.0.nupkg.sha512",
     "C:\\Users\\rlaeh\\.nuget\\packages\\system.management\\7.0.2\\system.management.7.0.2.nupkg.sha512",
