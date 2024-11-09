@@ -23,5 +23,6 @@ namespace DailyDiary.Views
         {
             InitializeComponent();
         }
+
     }
 }

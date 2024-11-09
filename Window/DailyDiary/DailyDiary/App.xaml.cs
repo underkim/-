@@ -37,7 +37,7 @@ namespace DailyDiary
             }
 
             // 로그인 창 표시
-            var loginWindow = new CalendarView();
+            var loginWindow = new DiaryEntryView();
             loginWindow.Show();
         }
     }
