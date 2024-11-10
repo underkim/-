@@ -17,15 +17,11 @@
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,20" >
             <!-- 저장 버튼 -->
             <Button Content="저장" Width="80" Height="30" Background="#4CAF50" Foreground="White" 
-                    FontWeight="Bold"  />
-
-            <!-- 수정 버튼 -->
-            <Button Content="수정" Width="80" Height="30" Background="#FF9800" Foreground="White" 
-                    FontWeight="Bold"  />
+                    FontWeight="Bold" Click="SaveButton_Click"  />
 
             <!-- 삭제 버튼 -->
             <Button Content="삭제" Width="80" Height="30" Background="#F44336" Foreground="White" 
-                    FontWeight="Bold"  />
+                    FontWeight="Bold" Click="RemoveButton_Click"  />
         </StackPanel>
     </Grid>
 </Window>
