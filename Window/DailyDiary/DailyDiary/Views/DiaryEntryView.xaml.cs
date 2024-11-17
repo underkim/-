@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DailyDiary.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,32 +20,12 @@ namespace DailyDiary.Views
     /// </summary>
     public partial class DiaryEntryView : Window
     {
-        public DiaryEntryView()
+        public DiaryEntryView(DateTime dateTime)
         {
             InitializeComponent();
-        }
 
-        private void SaveButton_Click(object sender, RoutedEventArgs e)
-        {
-            string content = DiaryTextBox.Text;
-            if(string.IsNullOrWhiteSpace(content))
-            {
-                MessageBox.Show("내용을 입력해주세요.", "알림");
-                return;
-            }
-            // 저장 로직 구현
-        }
-
-        private void RemoveButton_Click(object sender, RoutedEventArgs e)
-        {
-            var result = MessageBox.Show("정말로 삭제하시겠습니까?", "삭제 확인", MessageBoxButton.YesNo, MessageBoxImage.Warning);
-            
-           if(result == MessageBoxResult.Yes)
-            {
-                //삭제 로직 구현
-                DiaryTextBox.Clear();
-                MessageBox.Show("일기가 삭제되었습니다.", "알림");
-            }
+            // ViewModel 연결
+            DataContext = new DiaryEntryViewModel(dateTime);
         }
     }
 }
