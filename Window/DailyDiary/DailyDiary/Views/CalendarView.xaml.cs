@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -22,6 +23,19 @@ namespace DailyDiary.Views
         public CalendarView()
         {
             InitializeComponent();
+        }
+
+        public void CalendarDayButton_Click(object sender, RoutedEventArgs e)
+        {
+            
+            if (sender is CalendarDayButton button && button.DataContext is DateTime clickedDate )
+            {
+                var diaryView = new DiaryEntryView(clickedDate);
+                diaryView.Show();
+
+                this.Close();
+            }
+        
         }
     }
 }
