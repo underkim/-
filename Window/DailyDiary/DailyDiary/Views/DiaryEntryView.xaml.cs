@@ -19,11 +19,17 @@ namespace DailyDiary.Views
     /// </summary>
     public partial class DiaryEntryView : Window
     {
-        public DiaryEntryView()
+        private DateTime _selectedDate;
+    
+
+        public DiaryEntryView(DateTime dateTime)
         {
             InitializeComponent();
-        }
+            _selectedDate = dateTime;
 
+            DateLabel.Text = $"{_selectedDate:yyyy년 MM월 dd일}의 일기";
+
+        }
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
             string content = DiaryTextBox.Text;
@@ -42,9 +48,11 @@ namespace DailyDiary.Views
            if(result == MessageBoxResult.Yes)
             {
                 //삭제 로직 구현
+
                 DiaryTextBox.Clear();
                 MessageBox.Show("일기가 삭제되었습니다.", "알림");
             }
         }
+
     }
 }
