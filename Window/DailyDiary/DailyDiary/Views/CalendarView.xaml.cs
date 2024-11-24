@@ -31,9 +31,13 @@ namespace DailyDiary.Views
             if (sender is CalendarDayButton button && button.DataContext is DateTime clickedDate )
             {
                 var diaryView = new DiaryEntryView(clickedDate);
+                diaryView.Closed += (s, args) =>
+                {
+                    this.Show();
+                };
                 diaryView.Show();
 
-                this.Close();
+                this.Hide();
             }
         
         }
